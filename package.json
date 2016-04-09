@@ -1,0 +1,14 @@
+{
+  "name": "crud_agro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
+}

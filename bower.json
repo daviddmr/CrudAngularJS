@@ -1,0 +1,21 @@
+{
+  "name": "crud_agro",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "David"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular-material": "^1.0.7"
+  }
+}
