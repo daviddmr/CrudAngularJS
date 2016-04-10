@@ -1,4 +1,4 @@
-<div layout="column" ng-cloak style="width: 800px; margin-left: 15px;">
+<div layout="column" ng-cloak style="width: 800px; margin-top: 15px; margin-left: 15px;">
 
     <form name="userForm" layout="column" >
         <md-input-container class="md-block" flex-gt-xs>
@@ -7,16 +7,28 @@
 
         <md-input-container class="md-block" style="margin-top: 45px;">
             <label>Nome</label>
-            <input ng-model="user.firstName">
+            <input ng-model="user.firstName" required name="firstNameInput"  ng-pattern="/^[a-zA-Z]+$/">
+            <div ng-messages="userForm.firstNameInput.$error">
+                <div ng-message="required">É obrigatório informar um nome.</div>
+                <div
+                    ng-message="pattern" class="my-message">Não são permitidos caracteres especiais ou números no campo nome
+                </div>
+            </div>
         </md-input-container>
+
         <div layout="row">
             <md-input-container flex="80" class="md-block" >
                 <label>Sobrenome</label>
-                <input ng-model="user.lastName">
+                <input ng-model="user.lastName" required name="lastNameInput"  ng-pattern="/^[a-zA-Z]+$/">
+                <div ng-messages="userForm.lastNameInput.$error">
+                    <div ng-message="required">É obrigatório informar um sobrenome.</div>
+                    <div
+                        ng-message="pattern" class="my-message">Não são permitidos caracteres especiais ou números no campo sobrenome
+                    </div>
+                </div>
             </md-input-container>
 
-            <md-datepicker style="margin-top: 12px;" ng-model="user.birthday" md-placeholder="Nascimento">
-
+            <md-datepicker style="margin-top: 12px;" ng-model="user.birthday" md-placeholder="Nascimento" ng-required>
         </div>
 
         <div layout="row">
