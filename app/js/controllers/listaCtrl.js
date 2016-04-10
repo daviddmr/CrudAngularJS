@@ -8,7 +8,7 @@ angular.module("CrudAgro")
                 console.log(data);
                 $scope.users = data;
             });
-        }
+        };
 
         $scope.orderByFunction = function (field){
             $scope.orderCriteria = field;
