@@ -1,7 +1,15 @@
 angular.module("CrudAgro")
-    .controller("listaCtrl", function ($scope){
+    .controller("listaCtrl", function ($scope, $http){
         $scope.control = "Lista Control";
-        $scope.user = {};
+        $scope.users = [];
+
+        var loadUsersListFromBackNode = function () {
+            $http.get("http://localhost:3412/users").success(function (data, status) {
+                console.log(data);
+                $scope.users = data;
+            });
+        }
+
         $scope.orderByFunction = function (field){
             $scope.orderCriteria = field;
             $scope.orderDirection = !$scope.orderDirection;
@@ -27,7 +35,7 @@ angular.module("CrudAgro")
             });
         };
 
-        $scope.users= [
+        /*$scope.users= [
             {"id": 1,"firstName":"Pedro","lastName":"Soeiro","birthday": "2016-04-04T03:00:00.000Z", "address":"Rua dos Soeiros","addressComplement":"Apt 601","district":"Serrinha","telephone":"8532171819","mobilePhone":"8599995543",
                 "rg":"200110110101",
                 "cpf":"01613829589","state":"RJ","city":"Rio de Janeiro","postCode":"68910-010"},
@@ -48,5 +56,7 @@ angular.module("CrudAgro")
                 "cpf":"01613829589","state":"RJ","city":"Rio de Janeiro","postCode":"68910-010"},
             {"id": 8, "firstName":"Alberto","lastName":"Henrique", "birthday": "2016-01-08T03:00:00.000Z", "address":"Rua dos Henriques","addressComplement":"","district":"José Walter","telephone":"8391918291","mobilePhone":"8718290182",
                 "rg":"20018172810"}
-        ];
+        ];*/
+
+        loadUsersListFromBackNode();
     });
