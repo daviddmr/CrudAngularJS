@@ -1,0 +1,97 @@
+<div layout="column" ng-cloak style="width: 800px; margin-left: 15px;">
+
+    <form name="userForm" layout="column" >
+        <md-input-container class="md-block" flex-gt-xs>
+            <label style="font-size: 24px; color: darkslategrey">Cadastro de novo usuário</label>
+        </md-input-container>
+
+        <md-input-container class="md-block" style="margin-top: 45px;">
+            <label>Nome</label>
+            <input ng-model="user.firstName">
+        </md-input-container>
+        <div layout="row">
+            <md-input-container flex="80" class="md-block" >
+                <label>Sobrenome</label>
+                <input ng-model="user.lastName">
+            </md-input-container>
+
+            <md-datepicker style="margin-top: 12px;" ng-model="user.birthday" md-placeholder="Nascimento">
+
+        </div>
+
+        <div layout="row">
+            <md-input-container flex="80" class="md-block">
+                <label>Endereço</label>
+                <input ng-model="user.address">
+            </md-input-container>
+
+            <md-input-container style="margin-left: 15px;" class="md-block">
+                <label>Complemento</label>
+                <input ng-model="user.addressComplement" >
+            </md-input-container>
+        </div>
+
+        <div layout="row" flex>
+            <md-input-container class="md-block" flex="30">
+                <label >Bairro</label>
+                <input ng-model="user.district">
+            </md-input-container>
+
+            <span flex="5"></span>
+
+            <md-input-container class="md-block" flex="30" style="margin-left: 15px;">
+                <label >Telefone Fixo</label>
+                <input ng-model="user.telephone">
+            </md-input-container>
+
+            <span flex="5"></span>
+
+            <md-input-container class="md-block" flex="30" align="end">
+                <label >Celular</label>
+                <input ng-model="user.mobilePhone">
+            </md-input-container>
+
+        </div>
+
+        <div layout="row">
+            <md-input-container flex="50" class="md-block">
+                <label>RG</label>
+                <input ng-model="user.rg">
+            </md-input-container>
+
+            <md-input-container flex="50" style="margin-left: 15px;" class="md-block">
+                <label>CPF</label>
+                <input ng-model="user.cpf" >
+            </md-input-container>
+        </div>
+
+        <div layout="row" layout-align="space-between stretch">
+            <md-input-container class="md-block" >
+                <label>Estado</label>
+                <md-select ng-model="user.state">
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                        {{state.abbrev}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container flex=50 class="md-block">
+                <label>Cidade</label>
+                <input ng-model="user.city">
+            </md-input-container>
+
+            <md-input-container flex=30 class="md-block">
+                <label>Código Postal</label>
+                <input ng-model="user.postCode">
+            </md-input-container>
+        </div>
+    </form>
+
+    <div layout="row" layout-align="end center" style="margin-bottom: 30px;">
+        <md-button ng-disabled="true"> Limpar </md-button>
+        <md-button class="md-raised md-primary" ng-click="add()">Salvar</md-button>
+    </div>
+
+    <!--<p>{{users}}</p>-->
+</div>
+

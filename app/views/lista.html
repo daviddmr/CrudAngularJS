@@ -1,0 +1,61 @@
+<div style="width: 800px; margin-top: 30px; margin-left: 15px;">
+
+    <div layout="row">
+        <h3 style="margin: 30px; margin-bottom: 0;">Tabela de usuários</h3>
+        <md-button ng-click="deleteUsers(users)" ng-disabled="!someoneSelected(users)">Apagar selecionados</md-button>
+    </div>
+
+    <div layout="row">
+        <input class="form-control" type="text" ng-model="searchCriteria" placeholder="O que você está buscando ?" style="margin-top: 20px; margin-left: 30px; margin-right: 20px; "/>
+        <md-icon class="material-icons md-dark" style="margin-right: 20px;">search</md-icon>
+    </div>
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th style="text-align: center;"></th>
+                <th style="text-align: center;"><a href="" ng-click="orderByFunction('id')">Id</a></th>
+                <th style="text-align: center;"><a href="" ng-click="orderByFunction('firstName')">Nome</a></th>
+                <th style="text-align: center;"><a href="" ng-click="orderByFunction('mobilePhone')">Telefone</a></th>
+                <th style="text-align: center;"><a href="" ng-click="orderByFunction('nome')">Data de nascimento</a></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr style="text-align: center;"  ng-class="{selected: user.selected}" ng-repeat="user in users | filter: searchCriteria | orderBy: orderCriteria: orderDirection">
+                <td><md-checkbox aria-label="Follow" ng-model="user.selected"></md-checkbox></td>
+                <td>{{user.id}}</td>
+                <td>{{user.firstName + " " +user.lastName}}</td>
+                <td>{{user.mobilePhone}}</td>
+                <td>{{user.birthday}}</td>
+                <td>
+                    <md-button class="md-fab md-mini" href="#/cadastro">
+                        <md-icon class="material-icons md-dark">create</md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini" ng-click="deleteOneUser(user)">
+                        <md-icon class="material-icons md-dark" ">delete</md-icon>
+                    </md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--<md-list-item ng-repeat="user in users" ng-click="goToPerson(person.name, $event)" class="noright">
+        <md-checkbox ng-model="user.selected"></md-checkbox>
+        <p>{{ user.id }}</p>
+        <p>{{ user.firstName + " " + user.lastName}}</p>
+        <p>{{ user.telephone }}</p>
+        <p>{{ user.birthday }}</p>
+        <md-button class="md-fab md-mini">
+            <md-icon class="material-icons md-dark">update</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini">
+            <md-icon class="material-icons md-dark">delete</md-icon>
+        </md-button>
+        &lt;!&ndash;<md-icon md-svg-icon="communication:email"  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+        <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon>&ndash;&gt;
+    </md-list-item>-->
+
+    <!--{{users}}-->
+</div>
