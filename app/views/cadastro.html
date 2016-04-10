@@ -35,7 +35,7 @@
             <md-input-container flex="80" class="md-block">
                 <label>Endereço*</label>
                 <input ng-model="user.address" required name="emailInput">
-                <div ng-messages="userForm.firstNameInput.$error">
+                <div ng-messages="userForm.emailInput.$error">
                     <div ng-message="required">É obrigatório informar um endereço.</div>
                 </div>
             </md-input-container>
@@ -48,8 +48,11 @@
 
         <div layout="row" flex>
             <md-input-container class="md-block" flex="30">
-                <label >Bairro</label>
-                <input ng-model="user.district">
+                <label >Bairro*</label>
+                <input ng-model="user.district" required name="districtInput">
+                <div ng-messages="userForm.districtInput.$error">
+                    <div ng-message="required">É obrigatório informar um bairro.</div>
+                </div>
             </md-input-container>
 
             <span flex="5"></span>
