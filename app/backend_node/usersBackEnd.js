@@ -33,11 +33,7 @@ app.get('/users', function(req, res) {
     res.json(users);
 });
 
-app.post('/contatos', function(req, res) {
+app.post('/users', function(req, res) {
     users.push(req.body);
     res.json(true);
-});
-
-app.get('/operadoras', function(req, res) {
-    res.json(operadoras);
 });
