@@ -106,10 +106,11 @@
     </form>
 
     <div layout="row" layout-align="end center" style="margin-bottom: 30px;">
-        <md-button ng-disabled="true"> Limpar </md-button>
+        <md-button ng-disabled="false" ng-click="clearUsers()"> Limpar </md-button>
         <md-button class="md-raised md-primary" ng-click="add()">Salvar</md-button>
     </div>
 
+    {{user}}
     <!--<p>{{users}}</p>-->
 </div>
 

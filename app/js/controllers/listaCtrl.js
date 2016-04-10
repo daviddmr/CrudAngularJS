@@ -1,7 +1,7 @@
 angular.module("CrudAgro")
     .controller("listaCtrl", function ($scope){
         $scope.control = "Lista Control";
-
+        $scope.user = {};
         $scope.orderByFunction = function (field){
             $scope.orderCriteria = field;
             $scope.orderDirection = !$scope.orderDirection;
