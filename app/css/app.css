@@ -4,8 +4,27 @@
     margin-left: auto;
     margin-right: auto;
 }
-.table {
+
+.divMainListPage{
+    width: 800px;
     margin-top: 30px;
+    margin-left: 15px;
+}
+
+.inputSearchTable{
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.iconMagnifyingGlass{
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+.table th{
+    text-align: center;
 }
 /*.form-control {
     margin-bottom: 5px;

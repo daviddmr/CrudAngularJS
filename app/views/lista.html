@@ -1,4 +1,4 @@
-<div style="width: 800px; margin-top: 30px; margin-left: 15px;">
+<div class="divMainListPage">
 
     <div layout="row">
         <h3 style="margin: 30px; margin-bottom: 0;">Tabela de usuários</h3>
@@ -6,8 +6,8 @@
     </div>
 
     <div layout="row">
-        <input class="form-control" type="text" ng-model="searchCriteria" placeholder="O que você está buscando ?" style="margin-top: 20px; margin-left: 30px; margin-right: 20px; "/>
-        <md-icon class="material-icons md-dark" style="margin-right: 20px;">search</md-icon>
+        <input class="form-control inputSearchTable" type="text" ng-model="searchCriteria" placeholder="O que você está buscando ?"/>
+        <md-icon class="material-icons md-dark iconMagnifyingGlass">search</md-icon>
     </div>
 
     {{message}}
@@ -15,17 +15,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th style="text-align: center;"></th>
-                <th style="text-align: center;"><a href="" ng-click="orderByFunction('id')">Id</a></th>
-                <th style="text-align: center;"><a href="" ng-click="orderByFunction('firstName')">Nome</a></th>
-                <th style="text-align: center;"><a href="" ng-click="orderByFunction('mobilePhone')">Telefone</a></th>
-                <th style="text-align: center;"><a href="" ng-click="orderByFunction('nome')">Data de nascimento</a></th>
+                <th></th>
+                <th><a href="" ng-click="orderByFunction('id')">Id</a></th>
+                <th><a href="" ng-click="orderByFunction('firstName')">Nome</a></th>
+                <th><a href="" ng-click="orderByFunction('mobilePhone')">Telefone</a></th>
+                <th><a href="" ng-click="orderByFunction('nome')">Data de nascimento</a></th>
                 <th></th>
             </tr>
         </thead>
 
         <tbody>
-            <tr style="text-align: center;"  ng-class="{selected: user.selected}" ng-repeat="user in users | filter: searchCriteria | orderBy: orderCriteria: orderDirection">
+            <tr style="text-align: center;" ng-init="orderByFunction('id')" ng-class="{selected: user.selected}" ng-repeat="user in users | filter: searchCriteria | orderBy: orderCriteria: orderDirection">
                 <td><md-checkbox aria-label="Follow" ng-model="user.selected"></md-checkbox></td>
                 <td>{{user.id}}</td>
                 <td>{{user.firstName + " " +user.lastName}}</td>
