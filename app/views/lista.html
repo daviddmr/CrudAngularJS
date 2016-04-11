@@ -1,16 +1,16 @@
 <div class="divMainListPage">
 
-    <div layout="row">
-        <h3 class="divTitleListPage">Tabela de usuários</h3>
-    </div>
+    <md-input-container class="md-block">
+        <label class="labelTitlePages">Tabela de usuários</label>
+        <!--<h3 class="divTitleListPage">Tabela de usuários</h3>-->
+    </md-input-container>
 
-    <div layout="row">
+    <div layout="row" class="divSearchList">
         <input class="form-control inputSearchTable" type="text" ng-model="searchCriteria" placeholder="O que você está buscando ?"/>
         <md-icon class="material-icons md-dark iconMagnifyingGlass">search</md-icon>
     </div>
 
-    {{message}}
-
+    <!--{{message}}-->
 
     <div layout="row" layout-align="end center" class="divDeleteUsers"">
         <md-button ng-click="deleteUsers(users)" ng-disabled="!someoneSelected(users)">Apagar selecionados</md-button>
