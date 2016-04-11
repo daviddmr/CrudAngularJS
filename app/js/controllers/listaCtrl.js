@@ -6,7 +6,7 @@ angular.module("CrudAgro")
         var loadUsersListFromBackNode = function () {
             $http.get("http://localhost:3412/users").success(function (data, status) {
             //$http.get("http://localhost:8080/Restful/user/listarTodos").success(function (data, status) {
-                console.log(data);
+            //    console.log(data);
                 $scope.users = data;
             }).error(function (data, status) {
                 $scope.message = "Aconteceu um problema: "+ data;
