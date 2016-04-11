@@ -4,9 +4,8 @@ angular.module("CrudAgro")
         $scope.users = [];
 
         var loadUsersListFromBackNode = function () {
-            //$http.get("http://localhost:3412/users").success(function (data, status) {
-            console.log("Tá tentando");
-            $http.get("http://localhost:8080/Restful/user/listarTodos").success(function (data, status) {
+            $http.get("http://localhost:3412/users").success(function (data, status) {
+            //$http.get("http://localhost:8080/Restful/user/listarTodos").success(function (data, status) {
                 console.log(data);
                 $scope.users = data;
             }).error(function (data, status) {
@@ -19,10 +18,10 @@ angular.module("CrudAgro")
             $scope.orderDirection = !$scope.orderDirection;
         };
 
-        $scope.deleteOneUser = function(users, id) {
-            //var position = user.id;
-            //var position = users.indexOf("id");
-            //$scope.users.splice(position-1,1);
+        $scope.deleteOneUser = function(user) {
+            $scope.users = $scope.users.filter(function(el){
+               return el.id != user.id;
+            });
         };
 
         $scope.deleteUsers = function(users) {
