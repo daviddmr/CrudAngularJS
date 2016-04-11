@@ -11,15 +11,34 @@
     margin-left: 15px;
 }
 
+.divTitleListPage{
+    margin: 30px;
+}
+
 .inputSearchTable{
-    margin-top: 20px;
     margin-left: 30px;
-    margin-right: 20px;
+    margin-right: 10px;
     vertical-align: middle;
 }
 
 .iconMagnifyingGlass{
     margin-right: 20px;
+    vertical-align: middle;
+}
+
+.divDeleteUsers{
+    margin-top: 10px;
+}
+
+.table tr{
+    text-align: center;
+}
+
+.checkBoxForDelete {
+    margin-top: 15px; margin-left: 10px;
+}
+
+.tableTdRowItemsListPage{
     vertical-align: middle;
 }
 
