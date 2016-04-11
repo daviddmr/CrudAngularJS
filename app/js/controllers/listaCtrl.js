@@ -4,10 +4,10 @@ angular.module("CrudAgro")
         $scope.users = [];
 
         var loadUsersListFromBackNode = function () {
-            $http.get("http://localhost:3412/users").success(function (data, status) {
-            //$http.get("http://localhost:8080/Restful/user/listarTodos").success(function (data, status) {
-            //    console.log(data);
-                $scope.users = data;
+            //$http.get("http://localhost:3412/users").success(function (data, status) {
+            $http.get("http://localhost:8080/Restful/user/listarTodos").success(function (data, status) {
+                console.log(data);
+                $scope.users = data.user.map(function(el) { el.id = parseInt(el.id, 10); return el; });
             }).error(function (data, status) {
                 $scope.message = "Aconteceu um problema: "+ data;
             });
