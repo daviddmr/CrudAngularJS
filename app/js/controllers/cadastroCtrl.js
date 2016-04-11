@@ -1,7 +1,15 @@
 angular.module("CrudAgro")
-    .controller("cadastroCtrl", function ($scope, $http){
+    .controller("cadastroCtrl", ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams){
         $scope.control = "Cadastro Control";
-        $scope.user = {};
+
+
+        $scope.action = $routeParams.action;
+
+        if($scope.action === 'Editar'){
+            $scope.title = "Edição de usuário";
+        }else{
+            $scope.title = "Cadastro de novo usuário";
+        }
 
         $scope.addUser = function(user) {
             user.id = 12;
@@ -28,4 +36,4 @@ angular.module("CrudAgro")
         'SP SE TO').split(' ').map(function(state) {
             return {abbrev: state};
         });
-    });
+    }]);
