@@ -4,13 +4,11 @@
         <label class="labelTitlePages">{{title}}</label>
     </md-input-container>
 
-    {{user}}
-
     <form name="userForm" layout="column" >
 
         <md-input-container class="md-block inputFirstNameForm">
             <label>Nome*</label>
-            <input ng-model="user.firstName" required name="firstNameInput"  ng-pattern="/^[a-zA-Z]+$/">
+            <input ng-model="user.firstName" required name="firstNameInput"  ng-pattern="/^[a-zA-Z]+/">
             <div ng-messages="userForm.firstNameInput.$error">
                 <div ng-message="required">É obrigatório informar um nome.</div>
                 <div
@@ -22,7 +20,7 @@
         <div layout="row">
             <md-input-container flex="80" class="md-block" >
                 <label>Sobrenome*</label>
-                <input ng-model="user.lastName" required name="lastNameInput"  ng-pattern="/^[a-zA-Z]+$/">
+                <input ng-model="user.lastName" required name="lastNameInput"  ng-pattern="/^[a-zA-Z]+/">
                 <div ng-messages="userForm.lastNameInput.$error">
                     <div ng-message="required">É obrigatório informar um sobrenome.</div>
                     <div
@@ -131,7 +129,7 @@
 
     <div layout="row" layout-align="end center" class="divFootPageFormPage">
         <md-button ng-disabled="false" ng-click="clearForm(userForm) "> Limpar </md-button>
-        <md-button class="md-raised md-primary" ng-disabled="false" ng-click="addUser(user)">Salvar</md-button>
+        <md-button class="md-raised md-primary" ng-disabled="false" ng-click="addUpdateUser(user)">{{titleOfButton}}</md-button>
     </div>
 
 </div>
