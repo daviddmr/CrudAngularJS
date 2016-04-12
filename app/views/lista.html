@@ -12,7 +12,7 @@
 
     <!--{{message}}-->
 
-    <div layout="row" layout-align="end center" class="divDeleteUsers"">
+    <div layout="row" layout-align="end center" class="divDeleteUsers">
         <md-button ng-click="deleteUsers(users)" ng-disabled="!someoneSelected(users)">Apagar selecionados</md-button>
     </div>
 
@@ -30,7 +30,7 @@
         </thead>
 
         <tbody>
-            <tr ng-init="orderByFunction('id')" ng-class="{selected: user.selected}" ng-repeat="user in users | filter: searchCriteria | orderBy: orderCriteria: orderDirection">
+            <tr ng-class="{selected: user.selected}" ng-repeat="user in users | filter: searchCriteria | orderBy: orderCriteria: orderDirection">
                 <td></td>
                 <td>
                     <md-checkbox class="checkBoxForDelete" aria-label="selected" ng-model="user.selected"></md-checkbox>
@@ -40,7 +40,7 @@
                 <td style="vertical-align: middle">{{user.mobilePhone}}</td>
                 <td style="vertical-align: middle">{{user.birthday | date: 'dd/MM/yyyy'}}</td>
                 <td style="vertical-align: middle">
-                    <md-button class="md-fab md-mini" href="#/cadastro?action=Editar">
+                    <md-button class="md-fab md-mini" href="#/cadastro?action=Editar&id={{user.id}}">
                         <md-icon class="material-icons md-dark">create</md-icon>
                     </md-button>
                     <md-button class="md-fab md-mini" ng-click="deleteOneUser(user)">
