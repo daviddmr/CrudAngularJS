@@ -3,11 +3,15 @@ angular.module("CrudAgro")
         $scope.control = "Lista Control";
         $scope.users = [];
 
-        var loadUsersListFromBackNode = function () {
+        var loadUsersList = function () {
             //$http.get("http://localhost:3412/users").success(function (data, status) {
             $http.get("http://localhost:8080/Restful/user/listarTodos").success(function (data, status) {
                 console.log(data);
-                $scope.users = data.user.map(function(el) { el.id = parseInt(el.id, 10); return el; });
+                $scope.users = data.user.map(function(el) {
+                    el.id = parseInt(el.id, 10);
+                    el.birthday = new Date(el.birthday);
+                    return el;
+                });
             }).error(function (data, status) {
                 $scope.message = "Aconteceu um problema: "+ data;
             });
@@ -19,9 +23,18 @@ angular.module("CrudAgro")
         };
 
         $scope.deleteOneUser = function(user) {
-            $scope.users = $scope.users.filter(function(el){
-               return el.id != user.id;
+            $http.post("http://localhost:8080/Restful/user/delete",
+                "id=" + encodeURIComponent(user.id)
+            ).success(function (data, status) {
+                console.log("Success Response = "+data+ " Status = "+status);
+                loadUsersList();
+            }).error(function (data, status){
+                console.log("Error Response = "+data+ " Status = "+status);
+                loadUsersList();
             });
+            /*$scope.users = $scope.users.filter(function(el){
+               return el.id != user.id;
+            });*/
         };
 
         $scope.deleteUsers = function(users) {
@@ -59,5 +72,5 @@ angular.module("CrudAgro")
                 "rg":"20018172810"}
         ];*/
 
-        loadUsersListFromBackNode();
+        loadUsersList();
     });
