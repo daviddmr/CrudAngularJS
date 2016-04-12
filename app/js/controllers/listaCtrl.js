@@ -25,14 +25,12 @@ angular.module("CrudAgro")
         };
 
         $scope.deleteUsers = function(users) {
-            //A lista de contatos original recebe os valores filtrados dos elementos que NÃO estão selecionados
             $scope.users = users.filter(function (user){
                 if(!user.selected) return user;
             });
         };
 
         $scope.someoneSelected = function (users) {
-            // Verifica se há algum elemento em contatos que possua o valor de selecionado igual a true
             return users.some(function (user) {
                 return user.selected;
             });

@@ -4,6 +4,8 @@
         <label class="labelTitlePages">{{title}}</label>
     </md-input-container>
 
+    {{user}}
+
     <form name="userForm" layout="column" >
 
         <md-input-container class="md-block inputFirstNameForm">
@@ -61,7 +63,7 @@
             <div layout="column" class="inputTelephoneForm">
                 <label class="inputPlaceHolderForm">Telefone Fixo*</label>
                 <md-input-container class="inputContainersForm" flex="30" align="end">
-                    <input aria-label="telephone" ng-model="user.telephone" required name="telephoneInput" ui-mask="(99) 9999 - 9999">
+                    <input aria-label="telephone" ng-model="user.telephone" required name="telephoneInput" ui-mask="(99) 9999-9999">
                     <div ng-messages="userForm.telephoneInput.$error">
                         <div ng-message="required">É obrigatório informar um telefone.</div>
                     </div>
@@ -73,7 +75,7 @@
             <div layout="column">
                 <label class="inputPlaceHolderForm">Celular</label>
                 <md-input-container class="inputContainersForm" flex="30" align="end">
-                    <input aria-label="mobilePhone" ng-model="user.mobilePhone" ui-mask="(99) 99999 - 9999">
+                    <input aria-label="mobilePhone" ng-model="user.mobilePhone" ui-mask="(99) 99999-9999">
                 </md-input-container>
             </div>
 
@@ -120,7 +122,7 @@
             <div layout="column" flex="30">
                 <label class="inputPlaceHolderForm">Código Postal</label>
                 <md-input-container class="md-block inputContainersForm">
-                    <input aria-label="postcode" ng-model="user.postCode" ui-mask="99999 - 999">
+                    <input aria-label="postcode" ng-model="user.postcode" ui-mask="99999 - 999">
                 </md-input-container>
             </div>
 
@@ -129,7 +131,7 @@
 
     <div layout="row" layout-align="end center" class="divFootPageFormPage">
         <md-button ng-disabled="false" ng-click="clearForm(userForm) "> Limpar </md-button>
-        <md-button class="md-raised md-primary" ng-disabled="userForm.$invalid" ng-click="addUser(user)">Salvar</md-button>
+        <md-button class="md-raised md-primary" ng-disabled="false" ng-click="addUser(user)">Salvar</md-button>
     </div>
 
 </div>
