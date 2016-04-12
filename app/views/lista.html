@@ -33,7 +33,7 @@
             <tr ng-init="orderByFunction('id')" ng-class="{selected: user.selected}" ng-repeat="user in users | filter: searchCriteria | orderBy: orderCriteria: orderDirection">
                 <td></td>
                 <td>
-                    <md-checkbox class="checkBoxForDelete" aria-label="Follow" ng-model="user.selected"></md-checkbox>
+                    <md-checkbox class="checkBoxForDelete" aria-label="selected" ng-model="user.selected"></md-checkbox>
                 </td>
                 <td style="vertical-align: middle">{{user.id}}</td>
                 <td style="vertical-align: middle">{{user.firstName + " " +user.lastName}}</td>
