@@ -25,7 +25,15 @@ angular.module("CrudAgro")
         $scope.addUpdateUser = function(user) {
             if($scope.action === 'Editar'){
                 console.log("calling update post");
-                $http.post("http://localhost:8080/Restful/user/update",
+                console.log(user);
+                $http({
+                        method: 'POST',
+                        url: "http://localhost:8080/Restful/user/update",
+                        data: user
+                    }
+                );
+
+                /*$http.post("http://localhost:8080/Restful/user/update",
                     "id=" + encodeURIComponent(user.id) +
                     "&first_name=" + encodeURIComponent(user.firstName) +
                     "&last_name=" + encodeURIComponent(user.lastName) +
@@ -44,10 +52,18 @@ angular.module("CrudAgro")
                         console.log("Success Response = "+data+ " Status = "+status);
                 }).error(function (data, status){
                     console.log("Error Response = "+data+ " Status = "+status);
-                });
+                });*/
             }else{
                 console.log("calling insert post");
-                $http.post("http://localhost:8080/Restful/user/add",
+
+                $http({
+                        method: 'POST',
+                        url: "http://localhost:8080/Restful/user/add",
+                        data: user
+                    }
+                );
+
+                /*$http.post("http://localhost:8080/Restful/user/add",
                     "first_name=" + encodeURIComponent(user.firstName) +
                     "&last_name=" + encodeURIComponent(user.lastName) +
                     "&birthday=" + encodeURIComponent(user.birthday) +
@@ -65,7 +81,7 @@ angular.module("CrudAgro")
                         console.log("Success Response = "+data+ " Status = "+status);
                 }).error(function (data, status){
                     console.log("Error Response = "+data+ " Status = "+status);
-                });
+                });*/
             }
         };
 
