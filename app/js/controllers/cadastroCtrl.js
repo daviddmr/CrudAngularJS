@@ -17,6 +17,7 @@ angular.module("CrudAgro")
             $scope.titleOfButton = "Editar";
             getUser($routeParams.id);
         }else{
+            $scope.user = {};
             $scope.title = "Cadastro de novo usuário";
             $scope.titleOfButton = "Salvar";
         }

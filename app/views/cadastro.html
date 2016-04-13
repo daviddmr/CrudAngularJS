@@ -129,7 +129,7 @@
 
     <div layout="row" layout-align="end center" class="divFootPageFormPage">
         <md-button ng-disabled="false" ng-click="clearForm(userForm) "> Limpar </md-button>
-        <md-button class="md-raised md-primary" ng-disabled="false" ng-click="addUpdateUser(user)">{{titleOfButton}}</md-button>
+        <md-button class="md-raised md-primary" ng-disabled="userForm.$invalid" ng-click="addUpdateUser(user)">{{titleOfButton}}</md-button>
     </div>
 
 </div>
