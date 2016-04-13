@@ -9,7 +9,6 @@ angular.module("CrudAgro")
                 data.birthday = new Date(data.birthday);
                 $scope.user = data;
                 console.log($scope.user);
-                $scope.operadoras = data;
             });
         };
 
