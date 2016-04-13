@@ -38,9 +38,23 @@ angular.module("CrudAgro")
         };
 
         $scope.deleteUsers = function(users) {
-            $scope.users = users.filter(function (user){
-                if(!user.selected) return user;
+
+            var usersSelecteds = users.filter(function (user){
+                if(user.selected) {
+                    return user;
+                }
+            }).map( function(el){
+                return parseInt(el.id);
             });
+
+            $http.post("http://localhost:8080/Restful/user/deleteUsers", "ids=" +usersSelecteds)
+                .success(function (data, status) {
+                    console.log("Success Response = "+data+ " Status = "+status);
+                    loadUsersList();
+                }).error(function (data, status){
+                    console.log("Error Response = "+data+ " Status = "+status);
+                    loadUsersList();
+                });
         };
 
         $scope.someoneSelected = function (users) {
