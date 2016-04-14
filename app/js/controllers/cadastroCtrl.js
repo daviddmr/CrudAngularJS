@@ -1,8 +1,14 @@
 angular.module("CrudAgro")
-    .controller("cadastroCtrl", ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams){
+    .controller("cadastroCtrl", ['$scope', '$http', '$routeParams', '$mdDialog', function ($scope, $http, $routeParams, $mdDialog){
         $scope.control = "Cadastro Control";
 
         $scope.action = $routeParams.action;
+
+        $scope.someoneSelected = function (users) {
+            return users.some(function (user) {
+                return user.selected;
+            });
+        };
 
         var getUser = function(id){
             $http.get("http://localhost:8080/Restful/user/listarUm?id="+id).success(function (data, status) {
@@ -15,73 +21,55 @@ angular.module("CrudAgro")
         if($scope.action === 'Editar'){
             $scope.title = "Edição de usuário";
             $scope.titleOfButton = "Editar";
+            $scope.titleOfClearButton = "Desfazer alterações";
             getUser($routeParams.id);
         }else{
             $scope.user = {};
             $scope.title = "Cadastro de novo usuário";
             $scope.titleOfButton = "Salvar";
+            $scope.titleOfClearButton = "Limpar campos";
         }
+
+        var showAlert = function(ev, msg) {
+            console.log("Botao pressionado");
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    //.clickOutsideToClose(true)
+                    .title('Aviso')
+                    .textContent(msg)
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Ok!')
+                    .targetEvent(ev)
+            );
+        };
 
         $scope.addUpdateUser = function(user) {
             if($scope.action === 'Editar'){
-                console.log("calling update post");
-                console.log(user);
+                console.log("Calling update post");
                 $http({
                         method: 'POST',
                         url: "http://localhost:8080/Restful/user/update",
                         data: user
                     }
-                );
-
-                /*$http.post("http://localhost:8080/Restful/user/update",
-                    "id=" + encodeURIComponent(user.id) +
-                    "&first_name=" + encodeURIComponent(user.firstName) +
-                    "&last_name=" + encodeURIComponent(user.lastName) +
-                    "&birthday=" + encodeURIComponent(user.birthday) +
-                    "&address=" + encodeURIComponent(user.address) +
-                    "&address_complement=" + encodeURIComponent(user.addressComplement) +
-                    "&district=" + encodeURIComponent(user.district) +
-                    "&telephone=" + encodeURIComponent(user.telephone) +
-                    "&mobile_phone=" + encodeURIComponent(user.mobilePhone) +
-                    "&rg=" + encodeURIComponent(user.rg) +
-                    "&cpf=" + encodeURIComponent(user.cpf) +
-                    "&state=" + encodeURIComponent(user.state) +
-                    "&city=" + encodeURIComponent(user.city) +
-                    "&postcode=" + encodeURIComponent(user.postcode)
-                ).success(function (data, status) {
-                        console.log("Success Response = "+data+ " Status = "+status);
-                }).error(function (data, status){
-                    console.log("Error Response = "+data+ " Status = "+status);
-                });*/
+                ).then(function successCallback(response, data, status) {
+                    console.log("Success Response = "+response+ " Status = "+status+" Data: "+data);
+                    showAlert('Usuário editado com sucesso');
+                }, function errorCallback(response, data, status) {
+                    console.log("Error Response = "+response+ " Status = "+status+" Data: "+data);
+                });
             }else{
-                console.log("calling insert post");
-
+                console.log("Calling insert post");
                 $http({
                         method: 'POST',
                         url: "http://localhost:8080/Restful/user/add",
                         data: user
                     }
-                );
-
-                /*$http.post("http://localhost:8080/Restful/user/add",
-                    "first_name=" + encodeURIComponent(user.firstName) +
-                    "&last_name=" + encodeURIComponent(user.lastName) +
-                    "&birthday=" + encodeURIComponent(user.birthday) +
-                    "&address=" + encodeURIComponent(user.address) +
-                    "&address_complement=" + encodeURIComponent(user.addressComplement) +
-                    "&district=" + encodeURIComponent(user.district) +
-                    "&telephone=" + encodeURIComponent(user.telephone) +
-                    "&mobile_phone=" + encodeURIComponent(user.mobilePhone) +
-                    "&rg=" + encodeURIComponent(user.rg) +
-                    "&cpf=" + encodeURIComponent(user.cpf) +
-                    "&state=" + encodeURIComponent(user.state) +
-                    "&city=" + encodeURIComponent(user.city) +
-                    "&postcode=" + encodeURIComponent(user.postcode)
-                ).success(function (data, status) {
-                        console.log("Success Response = "+data+ " Status = "+status);
-                }).error(function (data, status){
-                    console.log("Error Response = "+data+ " Status = "+status);
-                });*/
+                ).then(function successCallback(response, data, status) {
+                    console.log("Success Response = "+response+ " Status = "+status+" Data: "+data);
+                }, function errorCallback(response, data, status) {
+                    console.log("Error Response = "+response+ " Status = "+status+" Data: "+data);
+                });
             }
         };
 
