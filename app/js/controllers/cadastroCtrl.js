@@ -9,11 +9,12 @@ angular.module("CrudAgro")
                 return user.selected;
             });
         };
-
+        var aux;
         var getUser = function(id){
             $http.get("http://localhost:8080/Restful/user/listarUm?id="+id).success(function (data, status) {
                 data.birthday = new Date(data.birthday);
                 $scope.user = data;
+                aux = angular.copy($scope.user);
                 console.log($scope.user);
             });
         };
@@ -30,8 +31,7 @@ angular.module("CrudAgro")
             $scope.titleOfClearButton = "Limpar campos";
         }
 
-        var showAlert = function(ev, msg) {
-            console.log("Botao pressionado");
+        var showAlert = function(msg) {
             $mdDialog.show(
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
@@ -40,7 +40,7 @@ angular.module("CrudAgro")
                     .textContent(msg)
                     .ariaLabel('Alert Dialog Demo')
                     .ok('Ok!')
-                    .targetEvent(ev)
+                    //.targetEvent(ev)
             );
         };
 
@@ -67,6 +67,9 @@ angular.module("CrudAgro")
                     }
                 ).then(function successCallback(response, data, status) {
                     console.log("Success Response = "+response+ " Status = "+status+" Data: "+data);
+                    $scope.user = {};
+                    window.location = "#/lista";
+                    showAlert('Usuário cadastrado com sucesso')
                 }, function errorCallback(response, data, status) {
                     console.log("Error Response = "+response+ " Status = "+status+" Data: "+data);
                 });
@@ -74,10 +77,14 @@ angular.module("CrudAgro")
         };
 
         $scope.clearForm = function(form) {
-            if (form) {
-                $scope.user = {};
-                //form.$setPristine();
-                form.$setUntouched();
+            if($scope.action === 'Editar'){
+                $scope.user = angular.copy(aux);
+            }else{
+                if (form) {
+                    $scope.user = {};
+                    //form.$setPristine();
+                    form.$setUntouched();
+                }
             }
         };
 
