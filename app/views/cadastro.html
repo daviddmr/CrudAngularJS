@@ -5,7 +5,6 @@
     </md-input-container>
 
     <form name="userForm" layout="column" >
-
         <md-input-container class="md-block inputFirstNameForm">
             <label>Nome*</label>
             <input ng-model="user.firstName" required name="firstNameInput"  ng-pattern="/^[a-zA-Z]+/">
@@ -123,12 +122,11 @@
                     <input aria-label="postcode" ng-model="user.postcode" ui-mask="99999 - 999">
                 </md-input-container>
             </div>
-
         </div>
     </form>
 
     <div layout="row" layout-align="end center" class="divFootPageFormPage">
-        <md-button ng-disabled="false" ng-click="clearForm(userForm) "> Limpar </md-button>
+        <md-button ng-disabled="false" ng-click="clearForm(userForm) ">{{titleOfClearButton}}</md-button>
         <md-button class="md-raised md-primary" ng-disabled="userForm.$invalid" ng-click="addUpdateUser(user)">{{titleOfButton}}</md-button>
     </div>
 
