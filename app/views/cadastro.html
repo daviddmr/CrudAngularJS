@@ -17,7 +17,7 @@
         </md-input-container>
 
         <div layout="row">
-            <md-input-container flex="80" class="md-block" >
+            <md-input-container class ="inputContainerLastName" flex="80" class="md-block" >
                 <label>Sobrenome*</label>
                 <input ng-model="user.lastName" required name="lastNameInput"  ng-pattern="/^[a-zA-Z]+/">
                 <div ng-messages="userForm.lastNameInput.$error">
@@ -28,7 +28,13 @@
                 </div>
             </md-input-container>
 
-            <md-datepicker class="inputBirthdayForm" ng-model="user.birthday" md-placeholder="Nascimento" ng-required>
+
+            <div layout="column" class="inputBirthdayForm">
+                <label class="inputPlaceHolderFormBirthday">Data de nascimento*</label>
+                <md-datepicker ng-model="user.birthday" md-placeholder="Nascimento" required>
+            </div>
+
+
         </div>
 
         <div layout="row">

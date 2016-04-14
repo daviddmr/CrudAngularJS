@@ -37,6 +37,10 @@
     vertical-align: middle;
 }
 
+.inputContainerLastName{
+    margin-top: 37px;
+}
+
 .divDeleteUsers{
     margin-top: 10px;
 }
@@ -102,6 +106,12 @@
 
 .inputPlaceHolderForm{
     margin-bottom: 0;
+    color: #BDBDBD;
+}
+
+.inputPlaceHolderFormBirthday{
+    margin-bottom: 0;
+    margin-left: 15px;
     color: #BDBDBD;
 }
 
