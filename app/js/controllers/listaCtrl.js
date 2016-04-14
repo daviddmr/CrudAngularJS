@@ -8,8 +8,16 @@ angular.module("CrudAgro")
             ).success(function (data, status) {
                 console.log(data);
                 $scope.users = data.user.map(function(el) {
+                    Object.keys(el).forEach(function(key) {
+                        if(el[key]=="null" || el[key]=="undefined") {
+                            delete el[key];
+                        }
+                    });
+
                     el.id = parseInt(el.id, 10);
-                    el.birthday = new Date(el.birthday);
+                    if(el.birthday) {
+                        el.birthday = new Date(el.birthday);
+                    }
                     return el;
                 });
             }).error(function (data, status) {
@@ -18,10 +26,6 @@ angular.module("CrudAgro")
         };
 
         var showAlert = function(ev) {
-            // Appending dialog to document.body to cover sidenav in docs app
-            // Modal dialogs should fully cover application
-            // to prevent interaction outside of dialog
-            console.log("Botao pressionado");
             $mdDialog.show(
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
