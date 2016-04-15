@@ -7,7 +7,7 @@ angular.module("CrudAgro")
             $http.get("http://localhost:8080/Restful/user/listarTodos"
             ).success(function (data, status) {
                 console.log(data);
-                $scope.users = data.user.map(function(el) {
+                $scope.users = data.map(function(el) {
                     Object.keys(el).forEach(function(key) {
                         if(el[key]=="null" || el[key]=="undefined") {
                             delete el[key];
