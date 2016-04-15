@@ -25,6 +25,10 @@ angular.module("CrudAgro")
             });
         };
 
+        $scope.refatoringTelephoneFormat = function(telephone){
+          return '('+telephone.substring(0, 2)+') '+telephone.substring(2, 6)+'-'+telephone.substring(6, 10);
+        };
+
         var showAlert = function(msg) {
             $mdDialog.show(
                 $mdDialog.alert()
