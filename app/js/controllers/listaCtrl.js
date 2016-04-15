@@ -43,6 +43,11 @@ angular.module("CrudAgro")
             $scope.orderDirection = !$scope.orderDirection;
         };
 
+        $scope.orderByFunctionInit = function (field){
+            $scope.orderCriteria = field;
+            $scope.orderDirection = false;
+        };
+
         $scope.deleteOneUser = function(user) {
             $http({
                     method: 'POST',
