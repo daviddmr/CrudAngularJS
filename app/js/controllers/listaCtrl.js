@@ -25,16 +25,16 @@ angular.module("CrudAgro")
             });
         };
 
-        var showAlert = function(ev) {
+        var showAlert = function(msg) {
             $mdDialog.show(
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('This is an alert title')
-                    .textContent('You can specify some description text in here.')
+                    //.clickOutsideToClose(true)
+                    .title('Aviso')
+                    .textContent(msg)
                     .ariaLabel('Alert Dialog Demo')
-                    .ok('Got it!')
-                    .targetEvent(ev)
+                    .ok('Ok!')
+                //.targetEvent(ev)
             );
         };
 
@@ -51,6 +51,7 @@ angular.module("CrudAgro")
                 }
             ).then(function successCallback(response, data, status) {
                 console.log("Success Response = "+response+ " Status = "+status+" Data: "+data);
+                showAlert('Usuário apagado com sucesso!');
                 loadUsersList();
             }, function errorCallback(response, data, status) {
                 console.log("Error Response = "+response+ " Status = "+status+" Data: "+data);
