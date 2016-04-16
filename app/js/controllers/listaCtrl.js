@@ -78,7 +78,13 @@ angular.module("CrudAgro")
                     url: "http://localhost:8080/Restful/user/deleteUsers",
                     data: {'users': usersSelecteds}
                     }
-            );
+            ).then(function successCallback(response, data, status) {
+                console.log("Success Response = "+response+ " Status = "+status+" Data: "+data);
+                showAlert('Usuário(s) apagado(s) com sucesso!');
+                loadUsersList();
+            }, function errorCallback(response, data, status) {
+                console.log("Error Response = "+response+ " Status = "+status+" Data: "+data);
+            });
         };
 
         $scope.someoneSelected = function (users) {
