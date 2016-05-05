@@ -1,4 +1,4 @@
-angular.module("CrudAgro")
+angular.module("CrudAngularJS")
     .controller("listaCtrl", function ($scope, $http, $mdDialog){
         $scope.control = "Lista Control";
         $scope.users = [];

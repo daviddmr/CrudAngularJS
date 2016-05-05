@@ -1,4 +1,4 @@
-angular.module("CrudAgro")
+angular.module("CrudAngularJS")
     .controller("cadastroCtrl", ['$scope', '$http', '$routeParams', '$mdDialog', function ($scope, $http, $routeParams, $mdDialog){
         $scope.control = "Cadastro Control";
 

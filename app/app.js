@@ -1,4 +1,4 @@
-angular.module("CrudAgro", ["ngMaterial", "ngMessages", "ngRoute" ,"ngAnimate", "ui.mask"])
+angular.module("CrudAngularJS", ["ngMaterial", "ngMessages", "ngRoute" ,"ngAnimate", "ui.mask"])
     .config(['$routeProvider', '$locationProvider', '$mdThemingProvider',
     function($routeProvider, $locationProvider, $mdThemingProvider ) {
         $routeProvider
